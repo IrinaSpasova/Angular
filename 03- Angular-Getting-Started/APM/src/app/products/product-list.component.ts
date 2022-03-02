@@ -1,18 +1,32 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IProduct } from "./product";
 
 @Component({
     selector: 'pm-products',
-    templateUrl:'./product-list.component.html'
+    templateUrl:'./product-list.component.html',
+    styleUrls:['./product-list.component.css']
 })
 
-export class ProductListComponent {
+export class ProductListComponent implements OnInit{
     //we may not specify type of values in TS, for example "pageTitle: string ='Product List'"==="pageTitle ='Product List'"
     pageTitle: string ='Product List';
     imageWidth: number = 50;
     imageMargin: number =2;
     showImage: boolean = false;
-    listFilter: string = 'cart';
+    // listFilter: string = 'cart'; Instead this wi build getter and setter
+
+    private _listFilter: string ='';
+    get listFilter():string{
+      return this._listFilter;
+    }
+    set listFilter(value:string){
+      this._listFilter = value;
+      console.log('In setter:', value); //Go an change ngOnInit here
+      this.filteredProducts = this.preformFilter(value);
+    }
+
+    filteredProducts: IProduct[] = [];
+
     products: IProduct[] =[
         
             {
@@ -68,7 +82,19 @@ export class ProductListComponent {
           
     ];
 
+    preformFilter(filterBy: string): IProduct[]{
+      filterBy = filterBy.toLocaleLowerCase();
+      return this.products.filter((product: IProduct)=>
+      product.productName.toLocaleLowerCase().includes(filterBy)); // if the listFilter is empty this returns all products, so go and change *ngFor in html
+    }
+
     toggleImage(): void{
         this.showImage = !this.showImage;
+    }
+
+    ngOnInit(): void {
+        //console.log('In OnInit');
+        this.listFilter = 'cart';
+        // If we want to see all products => this.listFilter = '';
     }
 }
