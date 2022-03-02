@@ -11,6 +11,16 @@ div.card {
   margin-top: 10px
 }
 
+.btn-primary{
+  background-color: blueviolet;
+}
+
+h1{
+  background-color: blueviolet;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  color: aliceblue;
+}
 .table {
   margin-top: 10px
 }
