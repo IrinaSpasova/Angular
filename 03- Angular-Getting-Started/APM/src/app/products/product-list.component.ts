@@ -1,14 +1,16 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 import { IProduct } from "./product";
 import { ProductService } from "./product.service";
 
 @Component({
-    selector: 'pm-products',
+  //we do not need selector anymore:
+    //selector: 'pm-products',
     templateUrl:'./product-list.component.html',
     styleUrls:['./product-list.component.css']
 })
 
-export class ProductListComponent implements OnInit{
+export class ProductListComponent implements OnInit, OnDestroy{
     //we may not specify type of values in TS, for example "pageTitle: string ='Product List'"==="pageTitle ='Product List'"
     pageTitle: string ='Product List';
     imageWidth: number = 50;
@@ -16,6 +18,8 @@ export class ProductListComponent implements OnInit{
     showImage: boolean = false;
     // listFilter: string = 'cart'; Instead this wi build getter and setter
     errorMessage: string = '';
+    sub!: Subscription;
+
 
     private _listFilter: string ='';
     get listFilter():string{
@@ -45,11 +49,14 @@ export class ProductListComponent implements OnInit{
 
     ngOnInit(): void {
       this.productService.getProducts().subscribe({
-        next: products => this.products = products,
+        next: products => {
+          this.products = products;
+          this.filteredProducts = this.products;;
+        },
         error: err => this.errorMessage = err
       });
       // if we want to see all products add this:
-      this.filteredProducts = this.products;
+      //
       
         //console.log('In OnInit');
 
@@ -58,7 +65,11 @@ export class ProductListComponent implements OnInit{
         // If we want to see all products => this.listFilter = '';
     }
 
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
+
     onRatingClicked(message: string): void{
-      this.pageTitle = 'Product List: '+message;
+      this.pageTitle = 'Product List: '+ message;
     }
 }
