@@ -1,4 +1,7 @@
-thead{
-    color: blueviolet;
-    font-size: 1.5em;
+thead {
+  color: blueviolet;
+}
+
+.btn-primary{
+  background-color: blueviolet;
 }
