@@ -1,10 +1,10 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'pm-root',
   template: `
     <nav class='navbar navbar-expand navbar-light bg-light'>
-        <a class='navbar-brand'> &nbsp; &nbsp; {{pageTitle}} </a>
+        <a class='navbar-brand'> &nbsp; &nbsp; {{pageTitle}}</a>
         <ul class='nav nav-pills'>
           <li><a class='nav-link' routerLinkActive='active' routerLink='/welcome'>Home</a></li>
           <li><a class='nav-link' routerLinkActive='active' routerLink='/products'>Product List</a></li>
@@ -13,12 +13,9 @@ import { Component } from "@angular/core";
     <div class='container'>
       <router-outlet></router-outlet>
     </div>
-    `
+    `,
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  pageTitle: string = 'Irina\'s Company';
-
+  pageTitle = 'Irina\'s Company';
 }
-
-
-// install font-awesome and bootstrap, then change main css
