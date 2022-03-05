@@ -3,5 +3,11 @@
   color: blueviolet;
 }
 
+.nav-pills .nav-link.active{
+  background-color: blueviolet;
+}
+
+
+
 
 
