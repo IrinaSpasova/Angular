@@ -1,0 +1,51 @@
+<div style="margin:20px">
+
+    <section>
+        <div class="example-label">Basic buttons</div>
+        <div class="example-button-row">
+          <button mat-button>Basic</button>
+          <button mat-button color="primary">Primary</button>
+          <button mat-button color="accent">Accent</button>
+          <button mat-button color="warn">Warn</button>
+          <button mat-button disabled>Disabled</button>
+          <a mat-button href="https://www.google.com/" target="_blank">Link</a>
+        </div>
+      </section>
+      
+<section>
+  <div class="example-label">Raised</div>
+  <div class="example-button-row">
+    <button mat-raised-button>Basic</button>
+    <button mat-raised-button color="primary">Primary</button>
+    <button mat-raised-button color="accent">Accent</button>
+    <button mat-raised-button color="warn">Warn</button>
+    <button mat-raised-button disabled>Disabled</button>
+    <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+  </div>
+</section>
+<p> And so on...</p>
+</div>
+<div style="margin:20px">
+    <p>Angular Material button-toggle</p>
+    <section>
+        <h4>Button Toggle inside of a Template-driven form</h4>
+        <mat-button-toggle-group [(ngModel)]="textValue" aria-label="Text value">
+          <mat-button-toggle style="background-color:brown;" value="bold">Bold</mat-button-toggle>
+          <mat-button-toggle style="background-color:aquamarine;" value="italic">Italic</mat-button-toggle>
+          <mat-button-toggle style="background-color:blanchedalmond" value="underline">Underline</mat-button-toggle>
+        </mat-button-toggle-group>
+        <p>Chosen value is {{textValue}}</p>
+      </section>
+      
+      <section>
+        <h4>Button Toggle inside of a Reactive form</h4>
+        <mat-button-toggle-group >
+          <mat-button-toggle value="bold">Bold</mat-button-toggle>
+          <mat-button-toggle value="italic">Italic</mat-button-toggle>
+          <mat-button-toggle value="underline">Underline</mat-button-toggle>
+        </mat-button-toggle-group>
+        
+      </section>
+      
+      
+</div>
