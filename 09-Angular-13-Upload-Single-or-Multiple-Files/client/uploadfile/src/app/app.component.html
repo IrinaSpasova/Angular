@@ -1,0 +1,16 @@
+<h1 style="text-align: center;">Angular 13 file upload Node.js and Express</h1>
+
+<div style="text-align: center;">
+  <form>
+    <div>
+      <input #singleInput type="file" name="image" (change)="selectImage($event)">
+    </div>
+    
+    <br>
+
+    <div>
+      <button type="submit" (click)="onSubmit()">Upload</button>
+    </div>
+
+  </form>
+</div>
