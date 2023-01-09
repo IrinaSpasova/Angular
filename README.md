@@ -1,2 +1,2 @@
 # Angular
-Angular and MEAN Projects
+Angular and MEAN small Projects
